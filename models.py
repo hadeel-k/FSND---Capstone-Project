@@ -62,7 +62,6 @@ class Movie(db.Model):
 
 # Actors
 
-
 class Actor(db.Model):
     __tablename__ = 'actors'
 
