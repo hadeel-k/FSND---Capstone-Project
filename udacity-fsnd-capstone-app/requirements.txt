@@ -69,6 +69,7 @@ parso==0.7.0
 pep8==1.7.1
 pickleshare==0.7.5
 pip-upgrade-outdated==1.5
+pipenv
 pipupgrade==1.7.4
 pluggy==0.13.1
 prometheus-client==0.8.0
@@ -83,6 +84,7 @@ pycparser==2.20
 pycryptodome==3.9.8
 Pygments==2.6.1
 PyJWT==1.7.1
+pyOpenSSL==19.1.0
 pylint==2.5.3
 pyparsing==2.4.7
 pyreadstat==1.0.0
@@ -94,7 +96,6 @@ python-editor==1.0.4
 python-jose==3.1.0
 python-jose-cryptodome==1.3.2
 pytz==2019.1
-pywin32==228
 pywinpty==0.5.7
 PyYAML==5.3.1
 pyzmq==19.0.1
@@ -115,6 +116,7 @@ traitlets==4.3.3
 typed-ast==1.4.1
 urllib3==1.25.10
 virtualenv==20.0.25
+virtualenv-clone==0.5.4
 wcwidth==0.2.5
 webencodings==0.5.1
 Werkzeug==1.0.1
