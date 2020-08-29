@@ -85,7 +85,6 @@ Pygments==2.6.1
 PyJWT==1.7.1
 pylint==2.5.3
 pyparsing==2.4.7
-pypiwin32==223
 pyreadstat==1.0.0
 pyrsistent==0.16.0
 pytest==5.4.3
