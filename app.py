@@ -55,7 +55,7 @@ def create_app(test_config=None):
     # -------------- GET - Movies
 
     @app.route('/movies', methods=['GET'])
-    # @requires_auth('get:movies')
+    @requires_auth('get:movies')
     def get_movies():
         page = request.args.get('page', default=1, type=int)
         movies = Movie.query.order_by(Movie.id).all()
