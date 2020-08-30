@@ -15,7 +15,7 @@ import inspect
 # username_pwd = "postgres:Bb009900"
 # database_path = "postgresql://{}@{}/{}".format(
 #     username_pwd, database_host, database_name)
-# database_path = os.environ['DATABASE_URL']
+database_path = os.environ['DATABASE_URL']
 db = SQLAlchemy()
 
 
