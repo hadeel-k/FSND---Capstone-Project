@@ -32,8 +32,6 @@ def paginate_movies(request, selection):
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__)
-    app.config['FLASK_ENV'] = 'development'
-    app.config['SECRET_KEY'] = os.urandom(32)
     setup_db(app)
     CORS(app, resources={r"/api/*": {"origins": "*"}})
 
@@ -52,7 +50,7 @@ def create_app(test_config=None):
 
     @APP.route('/', methods=['POST', 'GET'])
     def health():
-        return jsonify("Healthy")
+        return jsonify("FSND - Capstone Project")
 
     # -------------- GET - Movies
 
