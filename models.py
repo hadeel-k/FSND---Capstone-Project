@@ -15,7 +15,7 @@ import inspect
 # username_pwd = "postgres:Bb009900"
 # database_path = "postgresql://{}@{}/{}".format(
 #     username_pwd, database_host, database_name)
-database_path = os.environ['DATABASE_URL']
+# database_path = os.environ['DATABASE_URL']
 db = SQLAlchemy()
 
 
@@ -24,7 +24,7 @@ def db_drop_and_create_all():
     db.create_all()
 
 
-def setup_db(app, database_path=database_path):
+def setup_db(app):
     app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://mkdnlldthfxwej:859277a4f237a38029bfac0ee498776f2b5bd971177b95ac57eda17f79a7478b@ec2-54-146-91-153.compute-1.amazonaws.com:5432/db7lcj9q8jmhhn"
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.app = app
