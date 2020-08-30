@@ -1,7 +1,8 @@
 export AUTH0_DOMAIN="fsnd-hadeel.us.auth0.com"
+export AUTH0_CLIENTID='SPrO4QoXZADniKgveHDQVKy2YQ06VZIU'
 export ALGORITHMS=["RS256"]
 export API_AUDIENCE="capapi"
-export DATABASE_URL="postgresql://postgres:postgres@localhost:5432/capstone"
+export DATABASE_URL="postgres://mkdnlldthfxwej:859277a4f237a38029bfac0ee498776f2b5bd971177b95ac57eda17f79a7478b@ec2-54-146-91-153.compute-1.amazonaws.com:5432/db7lcj9q8jmhhn"
 export FLASK_APP=app.py
 export FLASK_ENV=development
 

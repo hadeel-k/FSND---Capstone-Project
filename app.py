@@ -48,6 +48,12 @@ def create_app(test_config=None):
         response.headers.add('Access-Control-Allow-Credentials', 'true')
         return response
 
+    # --------------  Main Page
+
+    @APP.route('/', methods=['POST', 'GET'])
+    def health():
+        return jsonify("Healthy")
+
     # -------------- GET - Movies
 
     @app.route('/movies', methods=['GET'])
