@@ -4,32 +4,41 @@
 
 ## About The Project
 
-The Casting Agency project details exactly how the API should be structured: models, attributes, endpoints, roles, permissions, and tests. 
+The Casting Agency project details exactly how the API should be structured: models, attributes, endpoints, roles, permissions, and tests.
 
 It models a company that is responsible for creating movies and managing and assigning actors to those movies. You are an Executive Producer within the company and are creating a system to simplify and streamline your process.
 
 ### Models:
+
 Movies with attributes title and release date
 Actors with attributes name, age and gender
 
 ### Endpoints:
+
 GET /actors and /movies
 DELETE /actors/ and /movies/
 POST /actors and /movies and
 PATCH /actors/ and /movies/
 
 ### Roles:
+
 ##### Casting Assistant
+
 Can view actors and movies
+
 ##### Casting Director
+
 All permissions a Casting Assistant has and…
 Add or delete an actor from the database
 Modify actors or movies
+
 ##### Executive Producer
+
 All permissions a Casting Director has and…
 Add or delete a movie from the database
 
 ### Tests:
+
 One test for success behavior of each endpoint
 One test for error behavior of each endpoint
 At least two tests of RBAC for each role
@@ -56,7 +65,7 @@ This will install all of the required packages we selected within the `requireme
 
 #### Key Dependencies
 
-- [Flask](http://flask.pocoo.org/)  is a lightweight backend microservices framework. Flask is required to handle requests and responses.
+- [Flask](http://flask.pocoo.org/) is a lightweight backend microservices framework. Flask is required to handle requests and responses.
 
 - [SQLAlchemy](https://www.sqlalchemy.org/) and [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/) are libraries to handle the lightweight sqlite database. Since we want you to focus on auth, we handle the heavy lift for you in `./src/database/models.py`. We recommend skimming this code first so you know how to interface with the Drink model.
 
@@ -81,6 +90,4 @@ The `--reload` flag will detect file changes and restart the server automaticall
 
 ## Application URI
 
-https://udacity-fsnd-capstone-app.herokuapp.com/ 
-| https://git.heroku.com/udacity-fsnd-capstone-app.git
-
+https://fsnd-hadeel.herokuapp.com/
