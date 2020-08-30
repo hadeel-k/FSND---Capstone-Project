@@ -1,7 +1,8 @@
 import os
 from flask import Flask, request, abort, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Column, String, Integer, create_engine
+from sqlalchemy import Column, String, Integer, DateTime, ForeignKey, create_engine
+from sqlalchemy.orm import relationship
 from flask_cors import CORS
 import json
 import sys
@@ -9,15 +10,17 @@ import inspect
 
 # Database
 
-database_name = "capstone"
-database_host = "localhost:5432"
-username_pwd = "postgres:Bb009900"
-database_path = "postgresql://{}@{}/{}".format(
-    username_pwd, database_host, database_name)
+# database_name = "capstone"
+# database_host = "localhost:5432"
+# username_pwd = "postgres:Bb009900"
+# database_path = "postgresql://{}@{}/{}".format(
+#     username_pwd, database_host, database_name)
+database_path = os.environ['DATABASE_URL']
 db = SQLAlchemy()
 
 
 def db_drop_and_create_all():
+    db.drop_all()
     db.create_all()
 
 
@@ -61,6 +64,7 @@ class Movie(db.Model):
         }
 
 # Actors
+
 
 class Actor(db.Model):
     __tablename__ = 'actors'

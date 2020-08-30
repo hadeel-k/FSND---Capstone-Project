@@ -48,7 +48,7 @@ def create_app(test_config=None):
 
     # --------------  Main Page
 
-    @app.route('/', methods=['POST', 'GET'])
+    @app.route('/')
     def health():
         return jsonify("FSND - Capstone Project")
 
