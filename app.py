@@ -61,7 +61,7 @@ def create_app(test_config=None):
         movies = Movie.query.order_by(Movie.id).all()
         page_of_movies = Movie.query.order_by(Movie.id).\
             paginate(page, MOVIES_PER_PAGE).items
-        actors = Actor.query.all()
+        # actors = Actor.query.all()
 
         if len(movies) == 0:
             abort(404)
