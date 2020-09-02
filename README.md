@@ -149,7 +149,7 @@ curl https://fsnd-hadeel.herokuapp.com/actors -H"Authorization: Bearer <Token>"
 **General**
 - Returns a list of all movies added to the database.
 - **Sample Request:**
-curl https://fsnd-hadeel.herokuapp.com/movies -H"Authorization: Bearer <Token>"
+curl https://fsnd-hadeel.herokuapp.com/movies -H"Authorization: Bearer <Insert_Token_Here>"
 - **Sample Response:**
 
 ```bash
@@ -179,54 +179,39 @@ curl https://fsnd-hadeel.herokuapp.com/movies -H"Authorization: Bearer <Token>"
 
 #### POST '/actors'
 **General**
-- F
+- Used to add a new actor to the database.
 - **Sample Request:**
-curl http://127.0.0.1:5000/categories/3/questions
+curl -X POST https://fsnd-hadeel.herokuapp.com/actors -H "Authorization: Bearer <Insert_Token_Here> -H "Content-Type: application/json" -d '{\"name\":\"Denzel Washington\", \"gender\":\"Male\", \"age\":\"65\"}'
 - **Sample Response:**
 
 ```bash
     {
-    
+    "id": 5,
+    "name": "Denzel Washington",
+    "age": 65,
+    "gender": "Male",
     }
-
 ```
 
 #### POST '/movies'
 **General**
-- F
+- Used to add a new movie to the database.
 - **Sample Request:**
-curl http://127.0.0.1:5000/categories/3/questions
+curl -X POST https://fsnd-hadeel.herokuapp.com/movies -H "Authorization: Bearer <Insert_Token_Here> -H "Content-Type: application/json" -d '{\"title\":\"The Fifth Movie\", \"release_date\":\"Sat, 10 Oct 2022 00:00:00 GMT\"}' 
 - **Sample Response:**
 
 ```bash
     {
-    
-    }
-
+    "id": 6,
+    "release_date": "Sun, 20 Feb 2022 00:00:00 GMT",
+    "title": "The Fifth Movie"
+        }
 ```
 
-
-#### DELETE '/questions/[question_id]'
-
-**General**
-- Deletes any chosen question by the question id.
-- **Sample Request:**
-curl -X DELETE -i http://127.0.0.1:5000/questions/22
-- **Sample Response:**
-
-```bash
-    
-    {
-    "deleted": 22,
-    "success": true
-    }
-
-```
-
-#### POST '/actors'
+#### PATCH '/actors/[actor_id]'
 
 **General**
-- To add an actor to the database.
+- Used to modify an actor using the actor ID.
 
 - **Sample Request:**
 
@@ -250,8 +235,56 @@ curl -X POST -H "Content-Type: application/json" -d "{\"name\":\"Viola Davis\", 
 
 
 
-#### POST '/movies'
+#### PATCH '/movies/[movie_id]'
+**General**
+- Used to modify a movie using the movie ID
 
+- **Sample Request:**
+curl https://fsnd-hadeel.herokuapp.com//movies/3 -X PATCH -H"Authorization: Bearer <Insert_Token_Here>" -H"Content-Type: application/json" -d'{"title":"The Third Movie", "release_date":"Sat, 01 Jan 2021 00:00:00 GMT"}'
+
+- **Sample Response:**
+
+```bash
+    
+{
+  "movies":
+    {
+      "id": 1, 
+      "release_date": "Thu, 20 Feb 2020 00:00:00 GMT", 
+      "title": "The First Movie"
+    }, 
+  "success": true
+}
+
+```
+
+#### PATCH '/actors/[actor_id]'
+**General**
+- Used to modify an actor using the actor ID.
+
+- **Sample Request:**
+
+```bash
+curl -X POST -H "Content-Type: application/json" -d "{\"title\":\"The First Movie\", \"release_date\": \"2020-02-20\"}" http://127.0.0.1:5000/movies
+```
+
+- **Sample Response:**
+
+```bash
+    
+{
+  "movies":
+    {
+      "id": 1, 
+      "release_date": "Thu, 20 Feb 2020 00:00:00 GMT", 
+      "title": "The First Movie"
+    }, 
+  "success": true
+}
+
+```
+
+#### PATCH '/movies/[movie_id]'
 **General**
 - To add an movies to the database.
 
