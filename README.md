@@ -71,9 +71,9 @@ This will install all of the required packages.
 
 - [Flask](http://flask.pocoo.org/) is a lightweight backend microservices framework. Flask is required to handle requests and responses.
 
-- [SQLAlchemy](https://www.sqlalchemy.org/) is the Python SQL toolkit and ORM we'll use handle the lightweight sqlite database. You'll primarily work in app.py and can reference models.py. 
+- [SQLAlchemy](https://www.sqlalchemy.org/) is the Python SQL toolkit and ORM we'll use handle the lightweight sqlite database. You'll primarily work in app.py and can reference models.py.
 
-- [Flask-CORS](https://flask-cors.readthedocs.io/en/latest/#) is the extension we'll use to handle cross origin requests from our frontend server. 
+- [Flask-CORS](https://flask-cors.readthedocs.io/en/latest/#) is the extension we'll use to handle cross origin requests from our frontend server.
 
 ## Running the server
 
@@ -89,11 +89,12 @@ https://fsnd-hadeel.herokuapp.com/
 ## Data Modeling
 
 #### Models.py
+
 The schema for the database and helper methods to simplify API behavior are in models.py:
+
 - There are two tables created: Movies, and Actors
 - The Movies table is used to view, add, delete, and modify movies.
 - The Actors table is used to view, add, delete, and modify actors.
-
 
 ## API Reference
 
@@ -103,13 +104,14 @@ Errors are returned as JSON objects in the following format:
 
 ```bash
     {
-    "error": 404, 
-    "message": "resource not found", 
+    "error": 404,
+    "message": "resource not found",
     "success": false
     }
 ```
 
 The API will return four error types when requests fail:
+
 - 404: Resource Not Found
 - 422: Unprocessable Request
 - 400: Bad Request
@@ -126,21 +128,20 @@ PATCH '/movies/[movie_id]'
 DELETE '/actors/[actor_id]'
 DELETE '/movies/[movie_id]'
 
-
 #### GET '/actors'
 **General**
-- Returns a list of all actors added to the database. 
+- Returns a list of all actors added to the database.
 - **Sample Request:**
-curl https://fsnd-hadeel.herokuapp.com/actors -H"Authorization: Bearer <Token>"
+  curl https://fsnd-hadeel.herokuapp.com/actors -H"Authorization: Bearer <Token>"
 - **Sample Response:**
 
 ```bash
     {
   "actor": {
-    "1": "John Doe", 
-    "2": "Jane Doe", 
+    "1": "John Doe",
+    "2": "Jane Doe",
     "3": "Jana Doe"
-  }, 
+  },
   "success": true
 }
 ```
@@ -149,7 +150,7 @@ curl https://fsnd-hadeel.herokuapp.com/actors -H"Authorization: Bearer <Token>"
 **General**
 - Returns a list of all movies added to the database.
 - **Sample Request:**
-curl https://fsnd-hadeel.herokuapp.com/movies -H"Authorization: Bearer <Insert_Token_Here>"
+  curl https://fsnd-hadeel.herokuapp.com/movies -H"Authorization: Bearer <Insert_Token_Here>"
 - **Sample Response:**
 
 ```bash
@@ -181,7 +182,7 @@ curl https://fsnd-hadeel.herokuapp.com/movies -H"Authorization: Bearer <Insert_T
 **General**
 - Used to add a new actor to the database.
 - **Sample Request:**
-curl -X POST https://fsnd-hadeel.herokuapp.com/actors -H "Authorization: Bearer <Insert_Token_Here> -H "Content-Type: application/json" -d '{\"name\":\"Denzel Washington\", \"gender\":\"Male\", \"age\":\"65\"}'
+  curl -X POST https://fsnd-hadeel.herokuapp.com/actors -H "Authorization: Bearer <Insert_Token_Here> -H "Content-Type: application/json" -d '{\"name\":\"Denzel Washington\", \"gender\":\"Male\", \"age\":\"65\"}'
 - **Sample Response:**
 
 ```bash
@@ -197,7 +198,7 @@ curl -X POST https://fsnd-hadeel.herokuapp.com/actors -H "Authorization: Bearer 
 **General**
 - Used to add a new movie to the database.
 - **Sample Request:**
-curl -X POST https://fsnd-hadeel.herokuapp.com/movies -H "Authorization: Bearer <Insert_Token_Here> -H "Content-Type: application/json" -d '{\"title\":\"The Fifth Movie\", \"release_date\":\"Sat, 10 Oct 2022 00:00:00 GMT\"}' 
+  curl -X POST https://fsnd-hadeel.herokuapp.com/movies -H "Authorization: Bearer <Insert_Token_Here> -H "Content-Type: application/json" -d '{\"title\":\"The Fifth Movie\", \"release_date\":\"Sat, 10 Oct 2022 00:00:00 GMT\"}'
 - **Sample Response:**
 
 ```bash
@@ -208,187 +209,81 @@ curl -X POST https://fsnd-hadeel.herokuapp.com/movies -H "Authorization: Bearer 
         }
 ```
 
-#### PATCH '/actors/[actor_id]'
-
-**General**
-- Used to modify an actor using the actor ID.
-
-- **Sample Request:**
-
-```bash
-curl -X POST -H "Content-Type: application/json" -d "{\"name\":\"Viola Davis\", \"gender\":\"Female\", \"age\":\"55\"}" http://127.0.0.1:5000/actors
-```
-
-- **Sample Response:**
-
-```bash
-    
-    {
-        "name": "Viola Davis",
-        "age": 55
-        "gender": "Female"
-    },
-    "success": true
-    }
-
-```
-
-
-
 #### PATCH '/movies/[movie_id]'
 **General**
 - Used to modify a movie using the movie ID
-
 - **Sample Request:**
-curl https://fsnd-hadeel.herokuapp.com//movies/3 -X PATCH -H"Authorization: Bearer <Insert_Token_Here>" -H"Content-Type: application/json" -d'{"title":"The Third Movie", "release_date":"Sat, 01 Jan 2021 00:00:00 GMT"}'
-
+```bash
+curl https://fsnd-hadeel.herokuapp.com//movies/3 -X PATCH -H"Authorization: Bearer <Insert_Token_Here>" -H"Content-Type: application/json" -d"{\"title\":\"The Third Movie\", \"release_date\":\"2021-01-01 00:00:00 GMT\"}'
+```
 - **Sample Response:**
 
 ```bash
-    
 {
-  "movies":
+  "movie": [
     {
-      "id": 1, 
-      "release_date": "Thu, 20 Feb 2020 00:00:00 GMT", 
-      "title": "The First Movie"
-    }, 
+      "id": 3,
+      "release_date": "Thu, 20 Feb 2020 00:00:00 GMT",
+      "title": "The Third Movie"
+    }
+    ],
   "success": true
 }
-
 ```
 
 #### PATCH '/actors/[actor_id]'
 **General**
 - Used to modify an actor using the actor ID.
-
-- **Sample Request:**
-
-```bash
-curl -X POST -H "Content-Type: application/json" -d "{\"title\":\"The First Movie\", \"release_date\": \"2020-02-20\"}" http://127.0.0.1:5000/movies
-```
-
-- **Sample Response:**
-
-```bash
-    
-{
-  "movies":
-    {
-      "id": 1, 
-      "release_date": "Thu, 20 Feb 2020 00:00:00 GMT", 
-      "title": "The First Movie"
-    }, 
-  "success": true
-}
-
-```
-
-#### PATCH '/movies/[movie_id]'
-**General**
-- To add an movies to the database.
-
-- **Sample Request:**
-
-```bash
-curl -X POST -H "Content-Type: application/json" -d "{\"title\":\"The First Movie\", \"release_date\": \"2020-02-20\"}" http://127.0.0.1:5000/movies
-```
-
-- **Sample Response:**
-
-```bash
-    
-{
-  "movies":
-    {
-      "id": 1, 
-      "release_date": "Thu, 20 Feb 2020 00:00:00 GMT", 
-      "title": "The First Movie"
-    }, 
-  "success": true
-}
-
-```
-
-#### POST '/questions'
-
-**General**
-- Adds new question to the list of Trivia questions.
 - **Sample Request:**
 ```bash
-curl -X POST -H "Content-Type: application/json" -d "{\"question\":\"Hematology is a branch of medicine involving the study of what?\", \"answer\":\"Blood\", \"difficulty\":\"4\", \"category\":\"1\"}" http://127.0.0.1:5000/questions
+curl https://fsnd-hadeel.herokuapp.com//actors/6 -X PATCH -H"Authorization: Bearer <Insert_Token_Here>" -H"Content-Type: application/json" -d"{\"name\":\"Scarlett Johansson\", \"gender\":\"Female\", \"age\":\"35\"}"
 ```
-(For Windows users, please hence that doublequotes must be masked with backslash inside)
 - **Sample Response:**
-
 ```bash
-    
+
     {
-  "question": {
-    "answer": "Blood",
-    "category": 1,
-    "difficulty": 4,
-    "id": 25,
-    "question": "Hematology is a branch of medicine involving the study of what?"
-    },
+    "actor": [
+        {
+        "name": "Scarlett Johansson",
+        "gender": "Female",
+        "age": "35"
+        }
+        ],
     "success": true
     }
 
 ```
 
-#### POST '/questions/search'
-
+#### DELETE '/actors/[actor_id]'
 **General**
-- Gets questions based on a search term (case sensetive).
-- Returns matching questions, success value, and total number of matching questions.
+- Used to delete an actor from the database.
 - **Sample Request:**
 ```bash
-curl http://127.0.0.1:5000/questions/search -X POST -H "Content-Type: application/json" -d "{\"searchTerm\": \"Giaconda\"}"
+curl https://fsnd-hadeel.herokuapp.com//actors/5 -X DELETE -H"Authorization: Bearer <Insert_Token_Here>"
 ```
-(For Windows users, please hence that doublequotes must be masked with backslash inside)
 - **Sample Response:**
 
 ```bash
-    
-    {
-    "current_category": null,
-    "questions": [
-        {
-            "answer": "Mona Lisa",
-            "category": 2,
-            "difficulty": 3,
-            "id": 17,
-            "question": "La Giaconda is better known as what?"
-        }
-    ],
+{
     "success": true,
-    "total_questions": 1
-    }
+    "delete": 5
+}
 
 ```
 
-#### POST '/quizzes'
-
+#### DELETE '/movies/[movie_id]'
 **General**
-- Initiates a new game with unrepeated questions based on a chosen category.
+- Used to delete a movie from the database.
 - **Sample Request:**
 ```bash
-curl http://127.0.0.1:5000/quizzes -X POST -H "Content-Type: application/json" -d "{\"quiz_category\": {\"type\": \"Art\", \"id\": \"2\"}}"
+curl https://fsnd-hadeel.herokuapp.com//movies/5 -X DELETE -H"Authorization: Bearer <Insert_Token_Here>"
 ```
-(For Windows users, please hence that doublequotes must be masked with backslash inside)
 - **Sample Response:**
 
 ```bash
-    
-    {
-        "question": {
-        "answer": "Escher",
-        "category": 2,
-        "difficulty": 1,
-        "id": 16,
-        "question": "Which Dutch graphic artist\u2013initials M C was a creator of optical illusions?"
-        },
-        "success": true
-    }
+{
+    "success": true,
+    "delete": 5
+}
 
 ```
