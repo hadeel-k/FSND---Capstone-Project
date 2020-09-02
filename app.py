@@ -79,7 +79,7 @@ def create_app(test_config=None):
 
     @app.route('/actors', methods=['GET'])
     @requires_auth('get:actors')
-    def get_actors(jwt):
+    def get_actors(payload):
         actors = Actor.query.order_by(Actor.id).all()
         formatted_actors = \
             {Actor.id: Actor.name for Actor in actors}
