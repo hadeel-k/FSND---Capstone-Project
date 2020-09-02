@@ -33,6 +33,7 @@ def setup_db(app):
 
 # Movies
 
+
 class Movie(db.Model):
     __tablename__ = 'movies'
 
@@ -63,6 +64,7 @@ class Movie(db.Model):
         }
 
 # Actors
+
 
 class Actor(db.Model):
     __tablename__ = 'actors'
@@ -96,13 +98,12 @@ class Actor(db.Model):
             'age': self.age
         }
 
-# Development
+# # Development
 
-class Actor(db.Model):
-    __tablename__ = 'actors'
+# class Actor(db.Model):
+#     __tablename__ = 'development'
 
-    id = Column(Integer, primary_key=True)
-    name = Column(String, unique=True)
-    gender = Column(String, nullable=False)
-    age = Column(String, nullable=False)
-
+#     id = Column(Integer, primary_key=True)
+#     name = Column(String, unique=True)
+#     gender = Column(String, nullable=False)
+#     age = Column(String, nullable=False)
