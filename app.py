@@ -56,7 +56,7 @@ def create_app(test_config=None):
 
     @app.route('/movies', methods=['GET'])
     @requires_auth('get:movies')
-    def get_movies(jwt):
+    def get_movies(payload):
         page = request.args.get('page', default=1, type=int)
         movies = Movie.query.order_by(Movie.id).all()
         page_of_movies = Movie.query.order_by(Movie.id).\
