@@ -70,9 +70,7 @@ def create_app(test_config=None):
             return jsonify({
                 'success': True,
                 'movies': [movie.format()
-                           for movie in page_of_movies],
-                'actors': {actor.format()['id']: actor.format()['name']
-                           for actor in actors},
+                           for movie in page_of_movies]
             })
 
     # -------------- GET - Actors

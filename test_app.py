@@ -90,8 +90,8 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(data['success'], False)
         self.assertEqual(data['message'], 'Resource Not Found')
 
-    def test_405_if_add_question_not_allowed(self):
-        res = self.client().post('/questions/50', json=self.new_question)
+    def test_405_if_add_actor_not_allowed(self):
+        res = self.client().post('/actors/50', json=self.new_actor)
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 405)

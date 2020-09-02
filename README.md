@@ -129,9 +129,9 @@ PATCH '/movies/[question_id]''
 
 #### GET '/actors'
 **General**
-- To view list of actors names 
+- Returns a list of all actors added to the database. 
 - **Sample Request:**
-curl http://127.0.0.1:5000/actors
+curl https://fsnd-hadeel.herokuapp.com/actors -H"Authorization: Bearer <Token>"
 - **Sample Response:**
 
 ```bash
@@ -146,12 +146,10 @@ curl http://127.0.0.1:5000/actors
 ```
 
 #### GET '/movies'
-
 **General**
-- Fetches a list of questions in which the keys are the ids and the value is the corresponding string of the question.
-- Returns a paginated lists (10 questions per page) of Trivia questions with it's answers, category, and difficulty score.
+- Returns a list of all movies added to the database.
 - **Sample Request:**
-curl http://127.0.0.1:5000/questions
+curl https://fsnd-hadeel.herokuapp.com/movies -H"Authorization: Bearer <Token>"
 - **Sample Response:**
 
 ```bash
