@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, String, Integer, DateTime, ForeignKey, create_engine
 from sqlalchemy.orm import relationship
 from flask_cors import CORS
+from datetime import date
 import json
 import sys
 import inspect
