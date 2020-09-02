@@ -1,7 +1,7 @@
 import os
 import models
 from models import setup_db, Movie, Actor
-from auth import AuthError, requires_auth, get_token_auth_header
+from auth import AuthError, requires_auth, get_token_auth_header, check_permissions
 from flask import Flask, request, abort, jsonify, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import SQLAlchemyError
