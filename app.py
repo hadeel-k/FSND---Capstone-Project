@@ -55,8 +55,8 @@ def create_app(test_config=None):
     # -------------- GET - Movies
 
     @app.route('/movies', methods=['GET'])
-    # @requires_auth('get:movies')
-    def get_movies():
+    @requires_auth('get:movies')
+    def get_movies(jwt):
         page = request.args.get('page', default=1, type=int)
         movies = Movie.query.order_by(Movie.id).all()
         page_of_movies = Movie.query.order_by(Movie.id).\
@@ -78,8 +78,8 @@ def create_app(test_config=None):
     # -------------- GET - Actors
 
     @app.route('/actors', methods=['GET'])
-    # @requires_auth('get:actors')
-    def get_actors():
+    @requires_auth('get:actors')
+    def get_actors(jwt):
         actors = Actor.query.order_by(Actor.id).all()
         formatted_actors = \
             {Actor.id: Actor.name for Actor in actors}
