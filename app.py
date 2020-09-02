@@ -133,7 +133,7 @@ def create_app(test_config=None):
 
     @app.route('/actors', methods=['POST'])
     @requires_auth('post:actors')
-    def post_actors(payload):
+    def post_actors(jwt):
         x = request.get_json()
         actorss = Actor(name=x['name'], age=x['age'], gender=x['gender'])
         actorss.insert()
@@ -146,7 +146,7 @@ def create_app(test_config=None):
 
     @ app.route('/movies', methods=['POST'])
     @requires_auth('post:movies')
-    def post_movies(payload):
+    def post_movies(jwt):
         x = request.get_json()
         moviess = Movie(title=x['title'], release_date=x['release_date'])
         moviess.insert()
