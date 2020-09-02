@@ -137,7 +137,7 @@ def create_app(test_config=None):
     @requires_auth('post:actors')
     def post_actors(payload):
         x = request.get_json()
-        actorss = Actor(name=x['name'], gender=x['gender'], age=x['age'])
+        actorss = Actor(name=x['name'], age=x['age'], gender=x['gender'])
         actorss.insert()
         return jsonify({
             'success': True,
