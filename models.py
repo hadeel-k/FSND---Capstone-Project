@@ -1,7 +1,7 @@
 import os
 from flask import Flask, request, abort, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Column, String, Integer, DateTime, ForeignKey, create_engine
+from sqlalchemy import Column, String, Integer, Float, Date, DateTime, ForeignKey, create_engine
 from sqlalchemy.orm import relationship
 from flask_cors import CORS
 from datetime import date
