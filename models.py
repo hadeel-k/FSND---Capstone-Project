@@ -33,13 +33,12 @@ def setup_db(app):
 
 # Movies
 
-
 class Movie(db.Model):
     __tablename__ = 'movies'
 
     id = Column(Integer, primary_key=True)
     title = Column(String)
-    release_date = Column(db.DateTime, nullable=False)
+    release_date = Column(db.DateTime(timezone=False), nullable=False)
 
     def __init__(self, title, release_date):
         self.title = title
@@ -65,14 +64,13 @@ class Movie(db.Model):
 
 # Actors
 
-
 class Actor(db.Model):
     __tablename__ = 'actors'
 
     id = Column(Integer, primary_key=True)
-    name = Column(String)
-    gender = Column(String)
-    age = Column(String)
+    name = Column(String, unique=True)
+    gender = Column(String, nullable=False)
+    age = Column(String, nullable=False)
 
     def __init__(self, name, gender, age):
         self.name = name
@@ -97,3 +95,14 @@ class Actor(db.Model):
             'gender': self.gender,
             'age': self.age
         }
+
+# Development
+
+class Actor(db.Model):
+    __tablename__ = 'actors'
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String, unique=True)
+    gender = Column(String, nullable=False)
+    age = Column(String, nullable=False)
+

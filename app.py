@@ -55,7 +55,7 @@ def create_app(test_config=None):
     # -------------- GET - Movies
 
     @app.route('/movies', methods=['GET'])
-    @requires_auth('get:movies')
+    # @requires_auth('get:movies')
     def get_movies():
         page = request.args.get('page', default=1, type=int)
         movies = Movie.query.order_by(Movie.id).all()
@@ -71,16 +71,14 @@ def create_app(test_config=None):
                 'success': True,
                 'movies': [movie.format()
                            for movie in page_of_movies],
-                'total_movies': len(movies),
                 'actors': {actor.format()['id']: actor.format()['name']
-                           for category in categories},
-                'current_category': None,
+                           for actor in actors},
             })
 
     # -------------- GET - Actors
 
     @app.route('/actors', methods=['GET'])
-    @requires_auth('get:actors')
+    # @requires_auth('get:actors')
     def get_actors():
         actors = Actor.query.order_by(Actor.id).all()
         formatted_actors = \
@@ -136,28 +134,28 @@ def create_app(test_config=None):
     # -------------- POST - Actor
 
     @app.route('/actors', methods=['POST'])
-    @requires_auth('post:actors')
-    def post_actors(jwt):
+    # @requires_auth('post:actors')
+    def post_actors():
         x = request.get_json()
         actorss = Actor(name=x['name'], gender=x['gender'], age=x['age'])
         actorss.insert()
         return jsonify({
             'success': True,
-            'actors': actorss
-        }), 200
+            'new_actor': actorss
+        })
 
     # -------------- POST - Movies
 
     @ app.route('/movies', methods=['POST'])
-    @requires_auth('post:movies')
-    def post_movies(jwt):
+    # @requires_auth('post:movies')
+    def post_movies():
         x = request.get_json()
         moviess = Movie(title=x['title'], release_date=x['release_date'])
         moviess.insert()
         return jsonify({
             'success': True,
-            'movies': moviess
-        }), 200
+            'new_movies': moviess
+        })
 
     # -------------- DELETE - Actor
 
@@ -176,6 +174,7 @@ def create_app(test_config=None):
             return jsonify({
                 'success': True,
                 'deleted': actor_id,
+                'actor': actor
             })
 
         except:

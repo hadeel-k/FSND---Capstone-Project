@@ -71,30 +71,19 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(data['message'], 'Resource Not Found')
 
 
-    def test_post_question(self):
-        res = self.client().post('/questions', json=self.new_question)
+    def test_delete_actors(self):
+        res = self.client().delete('/actors/1')
         data = json.loads(res.data)
 
-        self.assertEqual(res.status_code, 200)
-        self.assertEqual(data['success'], True)
-        self.assertEqual(data['created'])
-        self.assertEqual(len(data['questions']))
-
-    def test_delete_question(self):
-        res = self.client().delete('/questions/1')
-        data = json.loads(res.data)
-
-        question = Question.query.filter(Question.id == 1).one_or_none()
+        actor = Actor.query.filter(Actor.id == 1).one_or_none()
 
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
         self.assertEqual(data['deleted'], 1)
-        self.assertEqual(data['total_questions'], 1)
-        self.assertEqual(len(data['questions']))
-        self.assertEqual(question, None)
+        self.assertEqual(actor, None)
 
-    def test_404_if_question_dose_not_exist(self):
-        res = self.client().delete('/questions/100')
+    def test_404_if_actor_dose_not_exist(self):
+        res = self.client().delete('/actors/100')
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 404)
